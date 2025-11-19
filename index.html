@@ -93,6 +93,55 @@
 
   /* responsive tweaks */
   @media (max-width:700px){ .heart{width:52px;height:52px} .heart::before,.heart::after{width:36px;height:36px} #hud{left:10px;top:8px;padding:6px 8px} }
+.heart-rain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+.heart-rain span{
+  position:absolute;
+  top:-10vh;
+  color:#ff6aa7;
+  font-size:22px;
+  animation:fall 3.6s linear infinite;
+  opacity:0.85;
+  filter:drop-shadow(0 0 6px #ff8fc4);
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh) rotate(0deg); opacity:0.95;}
+  100%{transform:translateY(110vh) rotate(360deg); opacity:0.2;}
+}
+.restart-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:50;
+  background:#ff5fa9;
+  color:white;
+  padding:12px 20px;
+  border-radius:14px;
+  font-size:15px;
+  border:none;
+  box-shadow:0 0 12px rgba(255,80,150,0.45);
+  cursor:pointer;
+  font-weight:600;
+  transition:transform .2s;
+}
+.restart-btn:active{transform:scale(.95);}
+.love-message{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:18px;
+  color:#ffd8ec;
+  text-shadow:0 0 10px rgba(255,90,160,0.4);
+  z-index:20;
+  font-weight:500;
+}
+
 </style>
 </head>
 <body>
@@ -134,5 +183,11 @@
 
   setInterval(spawnHeart, 1000);
 </script>
+  <button id="restartBtn" class="restart-btn">Reiniciar</button>
+
+  <div class="love-message">Você ilumina qualquer caos, até a minha chuva de corações. ❤✨</div>
+
+  <div class="heart-rain"></div>
+
 </body>
 </html>
